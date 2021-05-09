@@ -1,0 +1,137 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <androidx.cardview.widget.CardView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:onClick="@{(view) -> user.onUserItemClicked(view, user)}"
+        app:cardCornerRadius="8dp"
+        app:cardElevation="4dp"
+        app:cardUseCompatPadding="true">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_margin="8dp"
+            android:baselineAligned="false"
+            android:orientation="horizontal"
+            android:paddingVertical="3dp">
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="18dp"
+                android:gravity="center">
+
+                <de.hdodenhof.circleimageview.CircleImageView
+                    android:id="@+id/iv_user_image"
+                    android:layout_width="60dp"
+                    android:layout_height="60dp"
+                    android:contentDescription="@string/photo"
+                    android:scaleType="centerCrop"
+                    android:src="@drawable/bg_photo_place_holder" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="2"
+                android:orientation="horizontal"
+                android:baselineAligned="false">
+
+                <LinearLayout
+                    android:gravity="center_vertical"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:orientation="vertical"
+                    android:layout_weight="4">
+                    <TextView
+                        android:id="@+id/tv_user_insta_id_home"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="@dimen/text_margin"
+                        android:maxLength="20"
+                        android:text="@{user.instaId}"
+                        android:textColor="@color/eclipse"
+                        android:textSize="12sp"
+                        android:textStyle="bold"
+                        tools:text="Mahdi Kase Atashin" />
+
+                    <TextView
+                        android:id="@+id/tv_user_phone_home"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="@dimen/text_margin"
+                        android:maxLength="20"
+                        android:text="@{user.phone}"
+                        android:textColor="@color/cardview_dark_background"
+                        android:layout_marginTop="@dimen/dimen_5"
+                        android:textSize="11sp"
+                        android:textStyle="bold"
+                        tools:text="Mahdi Kase Atashin" />
+
+                </LinearLayout>
+                <LinearLayout
+                    android:gravity="center"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1">
+                    <TextView
+                        android:id="@+id/tv_user_follower_home"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginHorizontal="5dp"
+                        android:text="@{user.getUserFollowerNumber(user)}"
+                        android:textColor="@color/granite_gray"
+                        android:textSize="10sp"
+                        android:textStyle="bold"
+                        tools:text="24K" />
+
+                </LinearLayout>
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="0.7"
+                android:gravity="center"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:textSize="10sp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@{Long.toString(user.interaction)+'%'}"
+                    tools:text="24%" />
+
+                <TextView
+                    android:background="@drawable/bg_circular"
+                    android:layout_marginStart="@dimen/dimen_12"
+                    android:textSize="12sp"
+                    android:gravity="center"
+                    android:textColor="@color/white"
+                    android:layout_width="24dp"
+                    android:layout_height="24dp"
+                    android:text="@{Long.toString(user.interactionNum)}"
+                    tools:text="1" />
+            </LinearLayout>
+        </LinearLayout>
+    </androidx.cardview.widget.CardView>
+
+
+    <data>
+
+        <variable
+            name="viewModel"
+            type="com.mahdikaseatashin.shotshot.viewmodel.UserViewModel" />
+
+
+        <variable
+            name="user"
+            type="com.mahdikaseatashin.shotshot.database.model.UserEntity" />
+    </data>
+
+</layout>

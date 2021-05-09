@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="lb">#F6FCFF</color>
+    <color name="botticelli">#d9e9ef</color>
+    <color name="pattens_blue">#c8ecf8</color>
+    <color name="light_blue">#b2d0e3</color>
+    <color name="jordy_blue">#7ab4dc</color>
+    <color name="steel_blue">#547caf</color>
+    <color name="light_blue_900">#FF01579B</color>
+    <color name="light_blue_A200">#FF40C4FF</color>
+    <color name="light_blue_A400">#FF00B0FF</color>
+    <color name="light_blue_600">#FF039BE5</color>
+    <color name="purple_200">#FFBB86FC</color>
+    <color name="purple_500">#FF6200EE</color>
+    <color name="purple_700">#FF3700B3</color>
+    <color name="teal_200">#FF03DAC5</color>
+    <color name="teal_700">#FF018786</color>
+    <color name="black">#FF000000</color>
+    <color name="white">#FFFFFFFF</color>
+    <color name="yellow">#CFB753</color>
+    <color name="dark_charcoal">#2e2e2e</color>
+    <color name="eclipse">#3a3a3a</color>
+    <color name="matterhorn">#4c4c4c</color>
+    <color name="dark_gray">#a7a7a7</color>
+    <color name="granite_gray">#616161</color>
+    <color name="dim_gray">#707070</color>
+    <color name="black_overlay">#66000000</color>
+</resources>
