@@ -25,25 +25,17 @@
                 android:layout_marginTop="20dp"
                 android:orientation="horizontal">
 
-                <com.google.android.material.textfield.TextInputLayout
+                <TextView
                     style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginHorizontal="20dp"
-                    app:startIconDrawable="@drawable/ic_instagram_circle">
+                    android:fontFamily="@font/comfortaa_bold"
+                    android:textSize="@dimen/dimen_16"
+                    tools:text="DaalZaal_Studio"
+                    android:text="@{user.instaId}"
+                    app:startIconDrawable="@drawable/ic_instagram_circle"/>
 
-                    <com.google.android.material.textfield.TextInputEditText
-                        android:id="@+id/edt_insta_id"
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:afterTextChanged="@{(editable) -> viewModel.setUserId(editable)}"
-                        android:digits="ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz1234567890_."
-                        android:hint="@string/name"
-                        android:inputType="textFilter"
-                        android:maxLines="1"
-                        android:text="@{user.instaId}" />
-
-                </com.google.android.material.textfield.TextInputLayout>
             </LinearLayout>
             <LinearLayout
                 android:layout_width="match_parent"
@@ -51,24 +43,16 @@
                 android:layout_marginBottom="5dp"
                 android:orientation="horizontal">
 
-                <com.google.android.material.textfield.TextInputLayout
-                    style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                <TextView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginHorizontal="20dp"
-                    app:startIconDrawable="@drawable/ic_phone">
-
-                    <com.google.android.material.textfield.TextInputEditText
-                        android:id="@+id/edt_phone"
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:afterTextChanged="@{(editable) -> viewModel.setPhone(editable)}"
-                        android:hint="@string/enter_phonenumber"
-                        android:inputType="phone"
-                        android:maxLines="1"
-                        android:text="@{user.phone}" />
-
-                </com.google.android.material.textfield.TextInputLayout>
+                    android:layout_marginHorizontal="30dp"
+                    android:layout_marginVertical="@dimen/dimen_20"
+                    android:fontFamily="@font/comfortaa_bold"
+                    android:textSize="@dimen/dimen_16"
+                    tools:text="+989025648561"
+                    android:text="@{user.phone}"
+                    app:startIconDrawable="@drawable/ic_instagram_circle"/>
             </LinearLayout>
 
 
@@ -76,111 +60,72 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="5dp"
-                android:layout_marginTop="5dp"
                 android:orientation="horizontal">
 
-                <com.google.android.material.textfield.TextInputLayout
-                    style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_marginEnd="5dp"
-                    android:layout_marginStart="20dp"
+                <TextView
+                    android:gravity="end"
                     android:layout_weight="1"
-                    app:startIconDrawable="@drawable/ic_follower_account_24">
-
-                    <com.google.android.material.textfield.TextInputEditText
-                        android:id="@+id/edt_follower_number_add"
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:afterTextChanged="@{(editable) -> viewModel.setFollowerNumber(editable)}"
-                        android:hint="@string/follower_num"
-                        android:inputType="number"
-                        android:selectAllOnFocus="true"
-                        android:maxLength="11"
-                        android:maxLines="1"
-                        android:text="@{Long.toString(user.followerNum)}" />
-
-                </com.google.android.material.textfield.TextInputLayout>
-
-                <com.google.android.material.textfield.TextInputLayout
-                    android:id="@+id/follower_number_extension_add_field"
-                    style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.ExposedDropdownMenu"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
-                    android:layout_marginEnd="20dp"
-                    android:layout_weight="0.7">
+                    android:layout_marginStart="30dp"
+                    android:layout_marginVertical="@dimen/dimen_20"
+                    android:fontFamily="@font/comfortaa_bold"
+                    android:textSize="@dimen/dimen_16"
+                    tools:text="+989025648561"
+                    android:text="@{Long.toString(user.followerNum)}"
+                    />
 
-                    <androidx.appcompat.widget.AppCompatAutoCompleteTextView
-                        android:id="@+id/follower_number_extension_add"
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:afterTextChanged="@{(editable) -> viewModel.setFollowerEx(editable)}"
-                        android:clickable="false"
-                        android:cursorVisible="false"
-                        android:focusable="false"
-                        android:focusableInTouchMode="false"
-                        android:hint="@string/extension" />
+                <TextView
+                    android:paddingStart="3dp"
+                    android:paddingEnd="3dp"
+                    android:layout_weight="1"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginEnd="30dp"
+                    android:layout_marginVertical="@dimen/dimen_20"
+                    android:fontFamily="@font/comfortaa_bold"
+                    android:textSize="@dimen/dimen_16"
+                    tools:text="+989025648561"
+                    android:text="@{user.followerEx}"
+                    />
 
-                </com.google.android.material.textfield.TextInputLayout>
+            </LinearLayout>
+
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="5dp"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginHorizontal="30dp"
+                    android:layout_marginVertical="@dimen/dimen_20"
+                    android:fontFamily="@font/comfortaa_bold"
+                    android:textSize="@dimen/dimen_16"
+                    tools:text="+989025648561"
+                    android:text="@{Integer.toString(user.interaction)}" />
+
             </LinearLayout>
 
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="5dp"
-                android:layout_marginTop="5dp"
                 android:orientation="horizontal">
 
-                <com.google.android.material.textfield.TextInputLayout
-                    style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                <TextView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginHorizontal="20dp"
-                    app:startIconDrawable="@drawable/ic_interaction_24">
+                    android:layout_marginHorizontal="30dp"
+                    android:layout_marginVertical="@dimen/dimen_20"
+                    android:fontFamily="@font/comfortaa_bold"
+                    android:textSize="@dimen/dimen_16"
+                    tools:text="+989025648561"
+                    android:text="@{user.gender}" />
 
-                    <com.google.android.material.textfield.TextInputEditText
-                        android:id="@+id/edt_interaction_rate"
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:afterTextChanged="@{(editable) -> viewModel.setInteraction(editable)}"
-                        android:hint="@string/enter_interaction_rate"
-                        android:inputType="number"
-                        android:selectAllOnFocus="true"
-                        android:maxLength="2"
-                        android:maxLines="1"
-                        android:text="@{Integer.toString(user.interaction)}" />
-
-                </com.google.android.material.textfield.TextInputLayout>
-            </LinearLayout>
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginBottom="5dp"
-                android:layout_marginTop="5dp"
-                android:orientation="horizontal">
-
-                <com.google.android.material.textfield.TextInputLayout
-                    android:id="@+id/dd_gender_add_field"
-                    style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.ExposedDropdownMenu"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginEnd="160dp"
-                    android:layout_marginStart="20dp"
-                    android:hint="@string/select_gender"
-                    app:startIconDrawable="@drawable/ic_gender_24">
-
-                    <androidx.appcompat.widget.AppCompatAutoCompleteTextView
-                        android:id="@+id/dd_gender_add"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:afterTextChanged="@{(editable) -> viewModel.setGender(editable)}"
-                        android:clickable="false"
-                        android:cursorVisible="false"
-                        android:focusable="false"
-                        android:focusableInTouchMode="false" />
-
-                </com.google.android.material.textfield.TextInputLayout>
             </LinearLayout>
 
         </LinearLayout>

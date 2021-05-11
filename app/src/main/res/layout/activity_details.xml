@@ -77,7 +77,7 @@
             app:srcCompat="@drawable/ic_insert_photo" />
 
         <include
-            layout="@layout/content_add"
+            layout="@layout/content_details"
             bind:user="@{user}"
             bind:viewModel="@{viewModel}" />
 
