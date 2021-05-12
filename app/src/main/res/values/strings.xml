@@ -118,4 +118,8 @@
     <string name="title_activity_item_detail_host">Item Detail Host Activity</string>
     <string name="title_item_list">Items</string>
     <string name="title_item_detail">Item Detail</string>
+    <string name="percent">%</string>
+    <string name="follower_number">Follower Number:</string>
+    <string name="interaction_rate">Interaction Rate:</string>
+    <string name="phonenumber">Phonenumber:</string>
 </resources>
