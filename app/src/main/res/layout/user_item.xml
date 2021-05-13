@@ -48,6 +48,7 @@
                     android:layout_height="match_parent"
                     android:orientation="vertical"
                     android:layout_weight="4">
+
                     <TextView
                         android:id="@+id/tv_user_insta_id_home"
                         android:layout_width="wrap_content"
@@ -74,11 +75,13 @@
                         tools:text="Mahdi Kase Atashin" />
 
                 </LinearLayout>
+
                 <LinearLayout
                     android:gravity="center"
                     android:layout_width="0dp"
                     android:layout_height="match_parent"
                     android:layout_weight="1">
+
                     <TextView
                         android:id="@+id/tv_user_follower_home"
                         android:layout_width="wrap_content"

@@ -1,11 +1,7 @@
 package com.mahdikaseatashin.shotshot.view.details
 
-import android.content.Intent
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.util.Log
-import android.view.View
-import android.widget.AdapterView
+import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.widget.Toolbar
 import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.ViewModelProvider
@@ -14,8 +10,6 @@ import com.mahdikaseatashin.shotshot.R
 import com.mahdikaseatashin.shotshot.dagger.factory.ViewModelFactory
 import com.mahdikaseatashin.shotshot.database.model.UserEntity
 import com.mahdikaseatashin.shotshot.databinding.ActivityDetailsBinding
-import com.mahdikaseatashin.shotshot.view.add.AddEditUserActivity
-import com.mahdikaseatashin.shotshot.view.main.MainActivity
 import com.mahdikaseatashin.shotshot.viewmodel.UserViewModel
 import javax.inject.Inject
 
@@ -69,7 +63,8 @@ class DetailsActivity : AppCompatActivity() {
     }
 
     private fun createViewModel() {
-        detailsViewModel = ViewModelProvider(this, detailsViewModelFactory)[UserViewModel::class.java]
+        detailsViewModel =
+            ViewModelProvider(this, detailsViewModelFactory)[UserViewModel::class.java]
         detailsViewModel.selectedUser = selectedUser
         detailsViewModel.instaId = selectedUser?.instaId
         selectedUser?.followerNum?.let {

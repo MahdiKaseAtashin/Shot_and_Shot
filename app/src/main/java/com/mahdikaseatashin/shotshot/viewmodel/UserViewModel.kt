@@ -5,9 +5,9 @@ import android.util.Log
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
-import au.com.bytecode.opencsv.CSVWriter
 import com.mahdikaseatashin.shotshot.database.model.UserEntity
 import com.mahdikaseatashin.shotshot.repository.UserRepository
+import com.opencsv.CSVWriter
 import java.io.File
 import java.io.FileWriter
 
@@ -35,6 +35,7 @@ class UserViewModel(
 
     fun writeToCsv() {
         val baseDir: String = android.os.Environment.getExternalStorageDirectory().absolutePath
+        Log.e("TAG", "writeToCsv: $baseDir")
         val fileName = "AnalysisData.csv"
         val filePath: String = baseDir + File.separator + fileName
         val f = File(filePath)
@@ -46,13 +47,37 @@ class UserViewModel(
             CSVWriter(FileWriter(filePath))
         }
         val users = getUsersList()
-        val dataTemp = arrayOf("ID","Insta ID","Follower","Interaction","Gender","PhoneNumber")
+        val dataTemp = arrayOf(
+            "ID",
+            "Insta ID",
+            "Follower",
+            "Interaction",
+            "Gender",
+            "Phone Number",
+            "Follower Extension",
+            "Follower Number",
+            "Interaction Number"
+        )
         writer.writeNext(dataTemp)
-        for (user in users){
-            val data = arrayOf(user.id.toString(),user.instaId,user.follower.toString(),user.interaction.toString(),user.gender,user.phone.toString())
+        for (user in users) {
+            val data = arrayOf(
+                user.id.toString(),
+                user.instaId,
+                user.follower.toString(),
+                user.interaction.toString(),
+                user.gender,
+                user.phone,
+                user.followerEx,
+                user.followerNum.toString(),
+                user.interactionNum.toString()
+            )
             writer.writeNext(data)
         }
         writer.close()
+    }
+
+    fun addUser(user: UserEntity) {
+        return userRepository.insertUser(user)
     }
 
 

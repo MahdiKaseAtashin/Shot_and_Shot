@@ -20,12 +20,23 @@ class UserRepository(appDatabase: AppDatabase) {
     }
 
 
-    fun getUserByIFG(minRate : Int,maxRate :Int,minFollower : Long, maxFollower: Long , gender : String):LiveData<List<UserEntity>>{
-        return userDAO.getUserByIFG(minRate,maxRate,minFollower,maxFollower,gender,"Both")
+    fun getUserByIFG(
+        minRate: Int,
+        maxRate: Int,
+        minFollower: Long,
+        maxFollower: Long,
+        gender: String
+    ): LiveData<List<UserEntity>> {
+        return userDAO.getUserByIFG(minRate, maxRate, minFollower, maxFollower, gender, "Both")
     }
 
-    fun getUserByIF(minRate : Int,maxRate :Int,minFollower : Long, maxFollower: Long):LiveData<List<UserEntity>>{
-        return userDAO.getUserByIF(minRate,maxRate,minFollower,maxFollower)
+    fun getUserByIF(
+        minRate: Int,
+        maxRate: Int,
+        minFollower: Long,
+        maxFollower: Long
+    ): LiveData<List<UserEntity>> {
+        return userDAO.getUserByIF(minRate, maxRate, minFollower, maxFollower)
     }
 
     fun getUsersByFollowers(): LiveData<List<UserEntity>> {

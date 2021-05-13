@@ -3,7 +3,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     package="com.mahdikaseatashin.shotshot">
 
-    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"
+    <uses-permission
+        android:name="android.permission.WRITE_EXTERNAL_STORAGE"
         tools:ignore="ScopedStorage" />
     <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
     <uses-permission android:name="android.permission.CAMERA" />
@@ -17,7 +18,6 @@
         android:roundIcon="@drawable/shot_logo"
         android:supportsRtl="true"
         android:theme="@style/Theme.ShotShot">
-        <activity android:name=".view.SaveActivity"/>
         <activity android:name=".view.details.DetailsActivity" />
         <activity android:name=".view.list.ListActivity" />
         <activity android:name=".view.interaction.InteractionActivity" />

@@ -13,7 +13,6 @@ import com.mahdikaseatashin.shotshot.database.model.UserEntity
 import com.mahdikaseatashin.shotshot.databinding.ActivityInteractionBinding
 import com.mahdikaseatashin.shotshot.view.list.ListActivity
 import kotlinx.android.synthetic.main.activity_interaction.*
-import kotlinx.android.synthetic.main.content_add.*
 
 class InteractionActivity : AppCompatActivity() {
 
@@ -38,11 +37,13 @@ class InteractionActivity : AppCompatActivity() {
         dd_gender.setText(selectedUser?.gender, false)
 
         btn_calculate_interaction.setOnClickListener {
-            if (edt_interaction.text.toString().isNotEmpty() && edt_follower.text.toString().isNotEmpty())
+            if (edt_interaction.text.toString().isNotEmpty() && edt_follower.text.toString()
+                    .isNotEmpty()
+            )
                 listActivity()
-            else if(edt_interaction.text.toString().isEmpty())
+            else if (edt_interaction.text.toString().isEmpty())
                 edt_interaction.error = "یه عدد یزن که با اختلافش آیدی هارو بیارم!"
-            else if(edt_follower.text.toString().isEmpty())
+            else if (edt_follower.text.toString().isEmpty())
                 edt_interaction.error = "یه عدد یزن که با اختلافش آیدی هارو بیارم!"
             else
                 Toast.makeText(this, "something went wrong!", Toast.LENGTH_SHORT).show()

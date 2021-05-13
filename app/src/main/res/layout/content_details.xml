@@ -34,9 +34,10 @@
                     android:textSize="@dimen/dimen_22"
                     tools:text="DaalZaal_Studio"
                     android:text="@{user.instaId}"
-                    app:startIconDrawable="@drawable/ic_instagram_circle"/>
+                    app:startIconDrawable="@drawable/ic_instagram_circle" />
 
             </LinearLayout>
+
             <LinearLayout
                 android:layout_marginTop="@dimen/dimen_22"
                 android:layout_width="match_parent"
@@ -52,7 +53,7 @@
                     android:fontFamily="@font/comfortaa_bold"
                     android:textSize="@dimen/dimen_12"
                     android:text="@string/phonenumber"
-                    app:startIconDrawable="@drawable/ic_instagram_circle"/>
+                    app:startIconDrawable="@drawable/ic_instagram_circle" />
 
                 <TextView
                     android:layout_width="wrap_content"
@@ -63,7 +64,7 @@
                     android:textSize="@dimen/dimen_12"
                     tools:text="+989025648561"
                     android:text="@{user.phone}"
-                    app:startIconDrawable="@drawable/ic_instagram_circle"/>
+                    app:startIconDrawable="@drawable/ic_instagram_circle" />
 
             </LinearLayout>
 
@@ -71,7 +72,7 @@
                 android:background="@color/dark_gray"
                 android:layout_marginHorizontal="@dimen/dimen_22"
                 android:layout_width="match_parent"
-                android:layout_height="1dp"/>
+                android:layout_height="1dp" />
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -87,8 +88,8 @@
                     android:layout_marginVertical="12dp"
                     android:fontFamily="@font/comfortaa_bold"
                     android:textSize="@dimen/dimen_12"
-                    android:text="@string/follower_number"
-                    />
+                    android:text="@string/follower_number" />
+
                 <TextView
                     android:gravity="end"
                     android:layout_width="wrap_content"
@@ -98,8 +99,7 @@
                     android:fontFamily="@font/comfortaa_bold"
                     android:textSize="@dimen/dimen_12"
                     tools:text="256"
-                    android:text="@{Long.toString(user.followerNum)}"
-                    />
+                    android:text="@{Long.toString(user.followerNum)}" />
 
                 <TextView
                     android:paddingStart="3dp"
@@ -111,8 +111,7 @@
                     android:fontFamily="@font/comfortaa_bold"
                     android:textSize="@dimen/dimen_12"
                     tools:text="K"
-                    android:text="@{user.followerEx}"
-                    />
+                    android:text="@{user.followerEx}" />
 
             </LinearLayout>
 
@@ -120,7 +119,7 @@
                 android:background="@color/dark_gray"
                 android:layout_marginHorizontal="@dimen/dimen_22"
                 android:layout_width="match_parent"
-                android:layout_height="1dp"/>
+                android:layout_height="1dp" />
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -163,7 +162,7 @@
                 android:background="@color/dark_gray"
                 android:layout_marginHorizontal="@dimen/dimen_22"
                 android:layout_width="match_parent"
-                android:layout_height="1dp"/>
+                android:layout_height="1dp" />
 
             <LinearLayout
                 android:layout_width="match_parent"

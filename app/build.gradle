@@ -92,11 +92,6 @@ dependencies {
     //for permission handling
     implementation 'com.karumi:dexter:6.2.2'
 
-    //save db to csv
-    implementation 'com.github.prabhat1707:DbExporterHelper:v1.0'
-
-    //save to csv
-    implementation 'com.github.salehyarahmadi:RoomDatabaseBackupAndRestore:v1.0.1'
-
-    implementation "com.github.doyaaaaaken:kotlin-csv-jvm:0.9.0"
+    //csv
+    implementation 'com.opencsv:opencsv:4.6'
 }

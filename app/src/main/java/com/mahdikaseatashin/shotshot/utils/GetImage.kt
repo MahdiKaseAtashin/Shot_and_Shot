@@ -24,7 +24,10 @@ object GetImage {
             .withListener(object : PermissionListener {
                 override fun onPermissionGranted(p0: PermissionGrantedResponse?) {
                     val cameraIntent = Intent(MediaStore.ACTION_IMAGE_CAPTURE)
-                    activityEdit.startActivityForResult(cameraIntent, AddEditUserActivity.CAPTURE_PHOTO_CODE)
+                    activityEdit.startActivityForResult(
+                        cameraIntent,
+                        AddEditUserActivity.CAPTURE_PHOTO_CODE
+                    )
                 }
 
                 override fun onPermissionDenied(p0: PermissionDeniedResponse?) {
@@ -34,7 +37,8 @@ object GetImage {
                             .setMessage("We need you to allow us to access camera for this feature\nfor this thing to happen go to setting and give us the permission")
                             .setPositiveButton("Setting") { _, _ ->
                                 val intent = Intent(Settings.ACTION_APPLICATION_DETAILS_SETTINGS)
-                                val uri: Uri = Uri.fromParts("package", activityEdit.packageName, null)
+                                val uri: Uri =
+                                    Uri.fromParts("package", activityEdit.packageName, null)
                                 intent.data = uri
                                 activityEdit.startActivity(intent)
                             }
@@ -71,7 +75,10 @@ object GetImage {
                         Intent.ACTION_PICK,
                         MediaStore.Images.Media.EXTERNAL_CONTENT_URI
                     )
-                    activityEdit.startActivityForResult(pickPhoto, AddEditUserActivity.PICK_PHOTO_CODE)
+                    activityEdit.startActivityForResult(
+                        pickPhoto,
+                        AddEditUserActivity.PICK_PHOTO_CODE
+                    )
                 }
 
                 override fun onPermissionDenied(p0: PermissionDeniedResponse?) {
@@ -81,7 +88,8 @@ object GetImage {
                             .setMessage("We need you to allow us to read gallery for this feature\nfor this thing to happen go to setting and give us the permission")
                             .setPositiveButton("Setting") { _, _ ->
                                 val intent = Intent(Settings.ACTION_APPLICATION_DETAILS_SETTINGS)
-                                val uri: Uri = Uri.fromParts("package", activityEdit.packageName, null)
+                                val uri: Uri =
+                                    Uri.fromParts("package", activityEdit.packageName, null)
                                 intent.data = uri
                                 activityEdit.startActivity(intent)
                             }

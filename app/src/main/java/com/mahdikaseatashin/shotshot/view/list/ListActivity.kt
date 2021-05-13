@@ -11,7 +11,6 @@ import com.mahdikaseatashin.shotshot.adapter.UserRecyclerViewAdapter
 import com.mahdikaseatashin.shotshot.dagger.factory.ViewModelFactory
 import com.mahdikaseatashin.shotshot.database.model.UserEntity
 import com.mahdikaseatashin.shotshot.databinding.ActivityListBinding
-import com.mahdikaseatashin.shotshot.view.details.DetailsActivity
 import com.mahdikaseatashin.shotshot.viewmodel.UserViewModel
 import kotlinx.android.synthetic.main.activity_list.*
 import javax.inject.Inject
@@ -59,13 +58,13 @@ class ListActivity : AppCompatActivity() {
         if (selectedGender != "Both")
             userViewModel.getUserByIFG(minRate, maxRate, minFollower, maxFollower, selectedGender!!)
                 .observe(this, {
-                    userAdapter = UserRecyclerViewAdapter(it,selectedUser)
+                    userAdapter = UserRecyclerViewAdapter(it, selectedUser)
                     rv_list_users.adapter = userAdapter
                 })
         else
             userViewModel.getUserByIF(minRate, maxRate, minFollower, maxFollower)
                 .observe(this, {
-                    userAdapter = UserRecyclerViewAdapter(it,selectedUser)
+                    userAdapter = UserRecyclerViewAdapter(it, selectedUser)
 
                     rv_list_users.adapter = userAdapter
                 })
@@ -93,6 +92,7 @@ class ListActivity : AppCompatActivity() {
         userViewModel = ViewModelProvider(this, viewModelFactory)[UserViewModel::class.java]
         userListClickHandler = UserListClickHandlers()
     }
+
     inner class UserListClickHandlers {
         fun onListFABClicked(view: View) {
             userViewModel.addInteraction(selectedUser!!)

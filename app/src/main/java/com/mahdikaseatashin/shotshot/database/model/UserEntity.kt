@@ -7,6 +7,7 @@ import android.util.Log
 import android.view.View
 import androidx.room.ColumnInfo
 import androidx.room.Entity
+import androidx.room.Index
 import androidx.room.PrimaryKey
 import com.mahdikaseatashin.shotshot.utils.Constants
 import com.mahdikaseatashin.shotshot.view.details.DetailsActivity
@@ -15,6 +16,7 @@ import com.mahdikaseatashin.shotshot.view.main.MainActivity
 
 @Entity(
     tableName = Constants.TABLE_USER,
+    indices = [Index(value = ["user_insta_id"], unique = true)]
 //    foreignKeys = [ForeignKey(
 //        entity = CategoryEntity::class,
 //        parentColumns = ["category_id"],
@@ -26,7 +28,7 @@ data class UserEntity(
 
     @ColumnInfo(name = "user_id")
     @PrimaryKey(autoGenerate = true)
-    val id: Long,
+    var id: Long,
 
     @ColumnInfo(name = "user_insta_id")
     var instaId: String,
@@ -59,7 +61,7 @@ data class UserEntity(
     @ColumnInfo(name = "user_interaction_number")
     var interactionNum: Int
 
-    ) : Parcelable {
+) : Parcelable {
     constructor(parcel: Parcel) : this(
         parcel.readLong(),
         parcel.readString().toString(),
@@ -71,7 +73,7 @@ data class UserEntity(
         parcel.readString().toString(),
         parcel.readString().toString(),
         parcel.readInt(),
-        )
+    )
 
     override fun writeToParcel(parcel: Parcel, flags: Int) {
         parcel.writeLong(id)
@@ -108,14 +110,14 @@ data class UserEntity(
         }
     }
 
-//     data binding onClick
+    //     data binding onClick
     fun onUserItemClicked(view: View, userEntity: UserEntity) {
-        Log.e("TAG", "onUserItemClicked: ${view.context}" )
+        Log.e("TAG", "onUserItemClicked: ${view.context}")
         if (view.context::class.java == MainActivity::class.java) {
             val intent = Intent(view.context, InteractionActivity::class.java)
             intent.putExtra("selected_user", userEntity)
             view.context.startActivity(intent)
-        }else{
+        } else {
             val intent = Intent(view.context, DetailsActivity::class.java)
             intent.putExtra("selected_user", userEntity)
             view.context.startActivity(intent)
