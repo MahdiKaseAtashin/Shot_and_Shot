@@ -1,6 +1,7 @@
 package com.mahdikaseatashin.shotshot.view.list
 
 import android.os.Bundle
+import android.view.View
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -10,6 +11,7 @@ import com.mahdikaseatashin.shotshot.adapter.UserRecyclerViewAdapter
 import com.mahdikaseatashin.shotshot.dagger.factory.ViewModelFactory
 import com.mahdikaseatashin.shotshot.database.model.UserEntity
 import com.mahdikaseatashin.shotshot.databinding.ActivityListBinding
+import com.mahdikaseatashin.shotshot.view.details.DetailsActivity
 import com.mahdikaseatashin.shotshot.viewmodel.UserViewModel
 import kotlinx.android.synthetic.main.activity_list.*
 import javax.inject.Inject
@@ -20,6 +22,7 @@ class ListActivity : AppCompatActivity() {
     private var selectedRate: Int? = null
     private var selectedFollower: Long? = null
     private var selectedGender: String? = null
+    private lateinit var userListClickHandler: UserListClickHandlers
 
     @Inject
     lateinit var viewModelFactory: ViewModelFactory
@@ -82,13 +85,20 @@ class ListActivity : AppCompatActivity() {
         binding.viewModel = userViewModel
         binding.user = selectedUser
         binding.lifecycleOwner = this
+        binding.clickHandlers = userListClickHandler
         setContentView(binding.root)
     }
 
     private fun createViewModel() {
         userViewModel = ViewModelProvider(this, viewModelFactory)[UserViewModel::class.java]
-
+        userListClickHandler = UserListClickHandlers()
     }
+    inner class UserListClickHandlers {
+        fun onListFABClicked(view: View) {
+            userViewModel.addInteraction(selectedUser!!)
+        }
+    }
+
 
     private fun injectDagger() {
         App.instance.appComponent.inject(this)

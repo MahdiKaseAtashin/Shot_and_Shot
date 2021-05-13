@@ -1,9 +1,11 @@
 package com.mahdikaseatashin.shotshot.view.details
 
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
 import android.view.View
+import android.widget.AdapterView
 import androidx.appcompat.widget.Toolbar
 import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.ViewModelProvider
@@ -12,6 +14,8 @@ import com.mahdikaseatashin.shotshot.R
 import com.mahdikaseatashin.shotshot.dagger.factory.ViewModelFactory
 import com.mahdikaseatashin.shotshot.database.model.UserEntity
 import com.mahdikaseatashin.shotshot.databinding.ActivityDetailsBinding
+import com.mahdikaseatashin.shotshot.view.add.AddEditUserActivity
+import com.mahdikaseatashin.shotshot.view.main.MainActivity
 import com.mahdikaseatashin.shotshot.viewmodel.UserViewModel
 import javax.inject.Inject
 
@@ -49,7 +53,6 @@ class DetailsActivity : AppCompatActivity() {
 
     private fun getIntentExtras() {
         selectedUser = intent?.getParcelableExtra("selected_user") as? UserEntity
-        Log.e("TAG", "getIntentExtras: $selectedUser")
     }
 
     private fun injectDagger() {

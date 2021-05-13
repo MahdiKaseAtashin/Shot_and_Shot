@@ -1,6 +1,9 @@
 package com.mahdikaseatashin.shotshot.view.main
 
+import android.Manifest
+import android.app.Activity
 import android.content.Intent
+import android.content.pm.PackageManager
 import android.os.Bundle
 import android.os.Handler
 import android.os.Looper
@@ -10,6 +13,7 @@ import android.widget.AdapterView
 import android.widget.ArrayAdapter
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
+import androidx.core.app.ActivityCompat
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.ItemTouchHelper
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -23,11 +27,19 @@ import com.mahdikaseatashin.shotshot.databinding.ActivityMainBinding
 import com.mahdikaseatashin.shotshot.view.add.AddEditUserActivity
 import com.mahdikaseatashin.shotshot.viewmodel.UserViewModel
 import kotlinx.android.synthetic.main.activity_main.*
+import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.launch
 import javax.inject.Inject
 
 
 class MainActivity : AppCompatActivity() {
 
+    private val REQUEST_EXTERNAL_STORAGE = 1
+    private val PERMISSIONS_STORAGE = arrayOf<String>(
+        Manifest.permission.READ_EXTERNAL_STORAGE,
+        Manifest.permission.WRITE_EXTERNAL_STORAGE
+    )
     companion object {
         private const val TAG = "MainActivity"
     }
@@ -224,7 +236,6 @@ class MainActivity : AppCompatActivity() {
         }
     }
 
-
     private fun setUpdatedUserList() {
         Handler(Looper.myLooper()!!).postDelayed({
             if (!isDestroyed) {
@@ -240,5 +251,25 @@ class MainActivity : AppCompatActivity() {
                 userAdapter?.notifyItemChanged(position)
             }
         }, 500)
+    }
+
+    fun verifyStoragePermissions(activity: Activity?) {
+        // Check if we have write permission
+        val permission = ActivityCompat.checkSelfPermission(
+            activity!!,
+            Manifest.permission.WRITE_EXTERNAL_STORAGE
+        )
+        if (permission != PackageManager.PERMISSION_GRANTED) {
+            // We don't have permission so prompt the user
+            ActivityCompat.requestPermissions(
+                activity,
+                PERMISSIONS_STORAGE,
+                REQUEST_EXTERNAL_STORAGE
+            )
+        }else{
+            CoroutineScope(Dispatchers.IO).launch {
+                userViewModel.writeToCsv()
+            }
+        }
     }
 }

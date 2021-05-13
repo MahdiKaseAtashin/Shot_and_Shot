@@ -20,13 +20,11 @@ import javax.inject.Singleton
 class RoomDatabaseModule(application: Application) {
 
     private var app = application
-    private lateinit var appDatabase: AppDatabase
 
     companion object {
-        private const val EDUCATIONAL_BOOKS_CATEGORY_ID = 1L
-        private const val NOVELS_CATEGORY_ID = 2L
-        private const val OTHER_BOOKS_CATEGORY_ID = 3L
+        lateinit var appDatabase: AppDatabase
     }
+
 
     private val databaseCallback = object : RoomDatabase.Callback() {
         override fun onCreate(db: SupportSQLiteDatabase) {

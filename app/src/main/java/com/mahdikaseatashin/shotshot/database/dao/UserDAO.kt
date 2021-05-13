@@ -22,6 +22,9 @@ interface UserDAO {
     @Query("SELECT * FROM ${Constants.TABLE_USER} ORDER BY user_insta_id COLLATE NOCASE ASC")
     fun getAllUsers(): LiveData<List<UserEntity>>
 
+@Query("SELECT * FROM ${Constants.TABLE_USER} ORDER BY user_insta_id COLLATE NOCASE ASC")
+    fun getAllUsersList(): List<UserEntity>
+
     @Query("SELECT * FROM ${Constants.TABLE_USER} ORDER BY user_followers COLLATE NOCASE DESC")
     fun getAllUsersSortByFollowers(): LiveData<List<UserEntity>>
 

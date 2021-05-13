@@ -5,8 +5,12 @@ import android.util.Log
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
+import au.com.bytecode.opencsv.CSVWriter
 import com.mahdikaseatashin.shotshot.database.model.UserEntity
 import com.mahdikaseatashin.shotshot.repository.UserRepository
+import java.io.File
+import java.io.FileWriter
+
 
 class UserViewModel(
     private var userRepository: UserRepository
@@ -28,6 +32,29 @@ class UserViewModel(
     var gender: String? = null
     var interaction: String? = null
     var image: String? = null
+
+    fun writeToCsv() {
+        val baseDir: String = android.os.Environment.getExternalStorageDirectory().absolutePath
+        val fileName = "AnalysisData.csv"
+        val filePath: String = baseDir + File.separator + fileName
+        val f = File(filePath)
+        // File exist
+        val writer: CSVWriter = if (f.exists() && !f.isDirectory) {
+            val mFileWriter = FileWriter(filePath, false)
+            CSVWriter(mFileWriter)
+        } else {
+            CSVWriter(FileWriter(filePath))
+        }
+        val users = getUsersList()
+        val dataTemp = arrayOf("ID","Insta ID","Follower","Interaction","Gender","PhoneNumber")
+        writer.writeNext(dataTemp)
+        for (user in users){
+            val data = arrayOf(user.id.toString(),user.instaId,user.follower.toString(),user.interaction.toString(),user.gender,user.phone.toString())
+            writer.writeNext(data)
+        }
+        writer.close()
+    }
+
 
     fun setUserId(charSequence: CharSequence) {
         instaId = charSequence.toString()
@@ -59,6 +86,11 @@ class UserViewModel(
             update(user)
         }
         shouldFinishActivity.value = true
+    }
+
+    fun addInteraction(user: UserEntity) {
+        user.interactionNum++
+        update(user)
     }
 
     fun saveUser() {
@@ -127,6 +159,10 @@ class UserViewModel(
 
     fun getAllUsers(): LiveData<List<UserEntity>> {
         return userRepository.getUsers()
+    }
+
+    fun getUsersList(): List<UserEntity> {
+        return userRepository.getUsersList()
     }
 
     fun getUserByIFG(

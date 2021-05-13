@@ -15,6 +15,11 @@ class UserRepository(appDatabase: AppDatabase) {
         return userDAO.getAllUsers()
     }
 
+    fun getUsersList(): List<UserEntity> {
+        return userDAO.getAllUsersList()
+    }
+
+
     fun getUserByIFG(minRate : Int,maxRate :Int,minFollower : Long, maxFollower: Long , gender : String):LiveData<List<UserEntity>>{
         return userDAO.getUserByIFG(minRate,maxRate,minFollower,maxFollower,gender,"Both")
     }
